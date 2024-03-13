@@ -4,15 +4,14 @@ from src.chicken_disease_CNN.logging import logger
 from src.chicken_disease_CNN.exception import CustomExeption
 import json
 import joblib
-from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
 import base64
 import sys
 
-@ensure_annotations
-def read_yaml(path_to_yaml:Path) -> ConfigBox:
+
+def read_yaml(path_to_yaml: Path) -> ConfigBox:
     '''
     Read yaml file and returns
     
@@ -28,7 +27,7 @@ def read_yaml(path_to_yaml:Path) -> ConfigBox:
     '''
 
     try:
-        with open(path_to_yaml, 'r') as yaml_file:
+        with open(path_to_yaml,'r') as yaml_file:
             content = yaml.safe_load(yaml_file)
             logger.info(f'yaml file: {yaml_file} loaded successfully')
             return ConfigBox(content)
@@ -36,7 +35,7 @@ def read_yaml(path_to_yaml:Path) -> ConfigBox:
     except Exception as e:
         raise CustomExeption(e,sys)
 
-@ensure_annotations
+
 def create_directories(path_to_directories: list, verbose=True):
     
     '''
@@ -53,7 +52,7 @@ def create_directories(path_to_directories: list, verbose=True):
             logger.info(f'Created directory at : {path}')
 
 
-@ensure_annotations
+
 def get_size(path:Path) -> str:
 
     '''
@@ -68,7 +67,7 @@ def get_size(path:Path) -> str:
     size_in_kb = round(os.path.getsize(path)/1024)
     return f'~ {size_in_kb} KB'
 
-@ensure_annotations
+
 def save_json(path: Path, data: dict):
     '''save json data
     
@@ -82,7 +81,7 @@ def save_json(path: Path, data: dict):
 
     logger.info(f'json file save at {path}')
 
-@ensure_annotations
+
 def load_json(path: Path) -> ConfigBox:
     """load json files data
 
@@ -99,7 +98,7 @@ def load_json(path: Path) -> ConfigBox:
     return ConfigBox(content)
 
 
-@ensure_annotations
+
 def save_bin(data: Any, path: Path):
     """save binary file
 
@@ -111,7 +110,7 @@ def save_bin(data: Any, path: Path):
     logger.info(f"binary file saved at: {path}")
 
 
-@ensure_annotations
+
 def load_bin(path: Path) -> Any:
     """load binary data
 
