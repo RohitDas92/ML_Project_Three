@@ -40,6 +40,7 @@ list_of_file = [
     "research/prepare_callback.ipynb",
     "research/model_trainer.ipynb",
     "research/model_evaluation.ipynb",
+    "templates/index.html"
 ]
 
 for filepath in list_of_file:
